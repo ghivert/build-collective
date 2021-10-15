@@ -1,25 +1,26 @@
 pragma solidity >=0.4.22 <0.9.0;
+pragma experimental ABIEncoderV2;
 
 import "./Ownable.sol";
 
 contract BuildCollective is Ownable {
-  struct Company {
-    string name;
-    address owner;
-    mapping(address => bool) members;
+  struct User {
+    string username;
+    uint256 balance;
+    bool registered;
   }
 
-  mapping(address => Company) public companies;
+  mapping(address => User) private users;
 
-  function recordCompany(string memory name) public {
-    companies[msg.sender] = Company(name, msg.sender);
-    companies[msg.sender].members[msg.sender] = true;
+  event UserSignedUp(address indexed userAddress, User indexed user);
+
+  function user(address userAddress) public view returns (User memory) {
+    return users[userAddress];
   }
 
-  function addUser(address member) public {
-    Company storage company = companies[msg.sender];
-    require(member != address(0));
-    require(company.owner == msg.sender);
-    company.members[member] = true;
+  function signUp(string memory username) public returns (User memory) {
+    require(bytes(username).length > 0);
+    users[msg.sender] = User(username, 0, true);
+    emit UserSignedUp(msg.sender, users[msg.sender]);
   }
 }

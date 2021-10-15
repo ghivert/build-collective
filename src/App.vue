@@ -1,10 +1,23 @@
 <template>
-  <div id="nav">
+  <div id="nav" v-if="store.state.address">
     <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
+    <router-link to="/account">Account</router-link>
   </div>
   <router-view />
 </template>
+
+<script>
+import { defineComponent } from 'vue'
+import { useStore } from 'vuex'
+
+export default defineComponent({
+  name: 'App',
+  setup() {
+    const store = useStore()
+    return { store }
+  },
+})
+</script>
 
 <style>
 #app {

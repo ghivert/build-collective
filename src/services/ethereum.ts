@@ -11,7 +11,7 @@ export const connect = async () => {
       const abi: any = ContractInterface.abi
       const address = ContractInterface.networks['5777'].address
       const contract = new web3.eth.Contract(abi, address, { from: account })
-      return { account, contract }
+      return { address: account, contract }
     } catch (error) {
       console.error(error)
     }
