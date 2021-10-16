@@ -18,9 +18,9 @@
     <div class="home">
       <card
         v-for="(link, index) in links"
+        :key="index"
         :title="link.title"
         subtitle="To never be lost"
-        :key="index"
       >
         <a class="card-body" :href="link.link"> Find it here </a>
       </card>
@@ -55,12 +55,18 @@ export default defineComponent({
       const web3 = 'https://web3js.readthedocs.io/en/v1.2.11/index.html'
       const solidity = 'https://docs.soliditylang.org/en/v0.8.9/'
       const metamask = 'https://docs.metamask.io/guide/'
+      const gridGarden = 'https://cssgridgarden.com/'
+      const flexboxFroggy = 'https://flexboxfroggy.com/'
+      const mdn = 'https://developer.mozilla.org/fr/'
       return [
         link('Vue.js', vue),
         link('Vuex', vuex),
         link('Web3', web3),
         link('Solidity', solidity),
         link('MetaMask', metamask),
+        { title: 'MDN', link: mdn },
+        { title: 'Flexbox Froggy', link: flexboxFroggy },
+        { title: 'Grid Garden', link: gridGarden },
       ]
     },
   },
