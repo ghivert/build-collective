@@ -1,27 +1,23 @@
 <template lang="html">
-  <button
-    @click="$emit('click', $event)"
-    type="button"
-    class="button"
-    :class="className"
-  >
-    <div>
+  <button @click="$emit('click', $event)" class="button" :class="className">
+    <div class="button-body">
       <slot></slot>
     </div>
   </button>
 </template>
 
 <script lang="ts">
-export default {
-  props: {
-    transparent: Boolean,
-  },
+import { defineComponent } from 'vue'
+
+export default defineComponent({
+  name: 'CollectiveButton',
+  props: { transparent: Boolean },
   computed: {
     className(): string {
       return this.transparent ? 'transparent' : 'visible'
     },
   },
-}
+})
 </script>
 
 <style lang="css" scoped>
@@ -38,6 +34,10 @@ export default {
   align-items: center;
   justify-content: center;
   width: 100%;
+}
+
+.button-body {
+  font-variant: small-caps;
 }
 
 .transparent {

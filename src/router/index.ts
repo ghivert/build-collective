@@ -21,7 +21,7 @@ const router = createRouter({
 })
 
 router.beforeEach((to, _from, next) => {
-  if (to.name !== 'SignIn' && !store.state.address) {
+  if (to.name !== 'SignIn' && !store.state.account.address) {
     next({ name: 'SignIn' })
   } else {
     next()

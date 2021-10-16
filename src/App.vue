@@ -1,13 +1,12 @@
 <template>
   <nav class="navbar">
-    <div class="logo">
+    <router-link to="/" class="logo">
       <img alt="Vue logo" src="./assets/logo.svg" class="logo-img" />
       <div class="logo-name">Build Collective</div>
+    </router-link>
+    <div class="navbar-items" v-if="store.state.account.address">
+      <router-link to="/account" class="navbar-item">Account</router-link>
     </div>
-    <template v-if="store.state.address">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/account">Account</router-link>
-    </template>
   </nav>
   <router-view />
 </template>
@@ -26,6 +25,10 @@ export default defineComponent({
 </script>
 
 <style lang="css">
+* {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
 }
@@ -55,6 +58,9 @@ html {
   display: flex;
   align-items: center;
   padding: 12px;
+  color: inherit;
+  text-decoration: none;
+  font-variant: small-caps;
 }
 
 .logo-img {
@@ -64,6 +70,22 @@ html {
 
 .logo-name {
   font-size: 24px;
+}
+
+.navbar-items {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  justify-content: flex-end;
+}
+
+.navbar-item {
+  padding: 12px;
+  color: inherit;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 0.8rem;
+  text-transform: uppercase;
 }
 
 #app {
