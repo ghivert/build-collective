@@ -1,12 +1,12 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
 import store from '@/store'
-import Home from '@/views/Home.vue'
+import SignIn from '@/views/SignIn.vue'
 
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
-    name: 'Home',
-    component: Home,
+    name: 'SignIn',
+    component: SignIn,
   },
   {
     path: '/account',
@@ -21,8 +21,8 @@ const router = createRouter({
 })
 
 router.beforeEach((to, _from, next) => {
-  if (to.name !== 'Home' && !store.state.address) {
-    next({ name: 'Home' })
+  if (to.name !== 'SignIn' && !store.state.address) {
+    next({ name: 'SignIn' })
   } else {
     next()
   }
