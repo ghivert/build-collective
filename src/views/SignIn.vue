@@ -4,12 +4,13 @@
       v-if="!address"
       title="It looks like you're not connected."
       subtitle="Please connect to use the app."
+      :blue="true"
     >
       <collective-button :transparent="true" @click="connect">
         Connect
       </collective-button>
     </card>
-    <card title="You're connected!" subtitle="Hooray" v-else>
+    <card title="You're connected!" subtitle="Hooray" :blue="true" v-else>
       <collective-button :transparent="true" @click="goToAccount">
         Go to account
       </collective-button>

@@ -19,6 +19,7 @@
       <card
         :title="account.username"
         :subtitle="`${balance} Ξ\t\t${account.balance} Tokens`"
+        :gradient="true"
       >
         <div class="explanations">
           This data has been fetched from the blockchain. You started by
