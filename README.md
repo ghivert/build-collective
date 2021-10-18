@@ -66,7 +66,7 @@ Run the frontend
 # Yarn users
 yarn serve
 # NPM users
-npm serve
+npm run serve
 ```
 
 You’re good to go!
