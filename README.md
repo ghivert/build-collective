@@ -54,7 +54,6 @@ Create a symlink for your OS if this is not done for you.
 ```bash
 # Windows
 mklink /D src\build "..\build"
-move /Y truffle.js truffle-config.js
 
 # Unix and macOS
 ln -s ../build ./src/build
