@@ -64,9 +64,9 @@ Run the frontend
 
 ```bash
 # Yarn users
-yarn start
+yarn serve
 # NPM users
-npm start
+npm serve
 ```
 
 You’re good to go!
