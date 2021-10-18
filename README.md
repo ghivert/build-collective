@@ -44,9 +44,9 @@ Compile the contracts.
 
 ```bash
 # Yarn users
-yarn contracts:build
+yarn contracts:migrate
 # NPM users
-npm run contracts:build
+npm run contracts:migrate
 ```
 
 Create a symlink for your OS if this is not done for you.
