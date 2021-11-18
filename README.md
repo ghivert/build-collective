@@ -44,9 +44,9 @@ Compile the contracts.
 
 ```bash
 # Yarn users
-yarn contracts:build
+yarn contracts:migrate
 # NPM users
-npm run contracts:build
+npm run contracts:migrate
 ```
 
 Create a symlink for your OS if this is not done for you.
@@ -54,7 +54,6 @@ Create a symlink for your OS if this is not done for you.
 ```bash
 # Windows
 mklink /D src\build "..\build"
-move /Y truffle.js truffle-config.js
 
 # Unix and macOS
 ln -s ../build ./src/build
@@ -64,9 +63,9 @@ Run the frontend
 
 ```bash
 # Yarn users
-yarn start
+yarn serve
 # NPM users
-npm start
+npm run serve
 ```
 
 You’re good to go!
