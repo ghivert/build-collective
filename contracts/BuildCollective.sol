@@ -10,6 +10,13 @@ contract BuildCollective is Ownable {
     bool registered;
   }
 
+  struct Company {
+    string name;
+    User owner;
+    User[] members;
+    uint256 balance;
+  }
+
   mapping(address => User) private users;
 
   event UserSignedUp(address indexed userAddress, User indexed user);
