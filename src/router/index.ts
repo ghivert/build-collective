@@ -13,11 +13,6 @@ const routes: Array<RouteRecordRaw> = [
     name: 'Account',
     component: () => import('@/views/Account.vue'),
   },
-  {
-    path: '/signup',
-    name: 'SignUp',
-    component: () => import('@/views/SignUp.vue'),
-  },
 ]
 
 const router = createRouter({
@@ -25,12 +20,12 @@ const router = createRouter({
   routes,
 })
 
-// router.beforeEach((to, _from, next) => {
-//   if (to.name !== 'SignIn' && !store.state.account.address) {
-//     next({ name: 'SignIn' })
-//   } else {
-//     next()
-//   }
-// })
+router.beforeEach((to, _from, next) => {
+  if (to.name !== 'SignIn' && !store.state.account.address) {
+    next({ name: 'SignIn' })
+  } else {
+    next()
+  }
+})
 
 export default router

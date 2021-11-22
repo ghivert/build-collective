@@ -4,9 +4,8 @@
       <img alt="Vue logo" src="./assets/logo.svg" class="logo-img" />
       <div class="logo-name">Build Collective</div>
     </router-link>
-    <div class="navbar-items">
-      <router-link v-if="store.state.account.address" to="/account" class="navbar-item">Account</router-link>
-      <router-link v-else to="/signup" class="navbar-item">SignUp</router-link>
+    <div class="navbar-items" v-if="store.state.account.address">
+      <router-link to="/account" class="navbar-item">Account</router-link>
     </div>
   </nav>
   <router-view />
