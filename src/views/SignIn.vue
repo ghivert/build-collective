@@ -27,7 +27,6 @@ import CollectiveButton from '@/components/CollectiveButton.vue'
 import Spacer from '@/components/Spacer.vue'
 
 export default defineComponent({
-  name: 'SignIn',
   components: { Card, CollectiveButton, Spacer },
   setup() {
     const store = useStore()

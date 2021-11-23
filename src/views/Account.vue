@@ -47,6 +47,7 @@ import { useStore } from 'vuex'
 import Card from '@/components/Card.vue'
 
 export default defineComponent({
+  name: 'Account',
   components: { Card },
   setup() {
     const store = useStore()
@@ -55,29 +56,29 @@ export default defineComponent({
     const nbETH = computed(() => store.state.account.nbETH) // take the account balance ex: 100 eth  account.balance != balance
     return { address, contract, nbETH }
   },
-  data() {
+    data() {
     const account = null
-    // const username = ''
-    return { account }
+    const username = ''
+    return { account, username }
   },
-  // methods: {
-  //   async updateAccount() {
-  //     const { address, contract } = this
-  //     this.account = await contract.methods.user(address).call()
-  //   },
-  //   async signUp() {
-  //     const { contract, username } = this
-  //     const name = username.trim().replace(/ /g, '_')
-  //     await contract.methods.signUp(name).send()
-  //     await this.updateAccount()
-  //     this.username = ''
-  //   },
-  //   async addTokens() {
-  //     const { contract } = this
-  //     await contract.methods.addBalance(500).send()
-  //     await this.updateAccount()
-  //   },
-  // },
+  methods: {
+    async updateAccount() {
+      const { address, contract } = this
+      this.account = await contract.methods.user(address).call()
+    },
+    async signUp() {
+      const { contract, username } = this
+      const name = username.trim().replace(/ /g, '_')
+      await contract.methods.signUp(name).send()
+      await this.updateAccount()
+      this.username = ''
+    },
+    async addTokens() {
+      const { contract } = this
+      await contract.methods.addBalance(200).send()
+      await this.updateAccount()
+    },
+  },
   async mounted() {
     const { address, contract } = this //you need here of account and address to get "account" objet which contains username, balance( ex : 200 tokens) and a boolean
     const account = await contract.methods.user(address).call()
