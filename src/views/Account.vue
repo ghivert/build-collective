@@ -18,20 +18,23 @@
     <div class="card-home-wrapper">
       <card
         :title="account.username"
-        :subtitle="`${balance} Ξ\t\t${account.balance} Tokens`"
-        :gradient="true"
+        :subtitle="`${nbETH} Ξ\t\t${account.balance} Tokens`"
+        :gradient="false"
       >
         <div class="explanations">
-          This data has been fetched from the blockchain. You started by
-          connecting MetaMask, and you fetched your data by reading the
-          blockchain. Try to modify the code to see what's happening!
+         informations depuis le contract : <br>
+          username :{{ account.username}} <br>
+          balance : {{account.balance}} <br>
+          registered : {{account.registered}} <br> <br>
+          Information depuis Etherium : <br>
+          Contract <br>
+          Address : {{address}} <br>
+          Nb de ETH : {{nbETH}} 
         </div>
         <div class="explanations">
           On your account on the contract, you have
           {{ account.balance }} tokens. If you click
-          <button class="button-link" @click="addTokens">here</button>, you can
-          add some token to your account. Just give it a try! And think to put
-          an eye on Ganache!
+          <button class="button-link" @click="addTokens">Add tokens</button>
         </div>
       </card>
     </div>
@@ -44,15 +47,16 @@ import { useStore } from 'vuex'
 import Card from '@/components/Card.vue'
 
 export default defineComponent({
+  name: 'Account',
   components: { Card },
   setup() {
     const store = useStore()
-    const address = computed(() => store.state.account.address)
-    const balance = computed(() => store.state.account.balance)
-    const contract = computed(() => store.state.contract)
-    return { address, contract, balance }
+    const contract = computed(() => store.state.contract) // take the contract  !REQUIRED TO CONNECTION
+    const address = computed(() => store.state.account.address) // take the address !REQUIRED TO CONNECTION
+    const nbETH = computed(() => store.state.account.nbETH) // take the account balance ex: 100 eth  account.balance != balance
+    return { address, contract, nbETH }
   },
-  data() {
+    data() {
     const account = null
     const username = ''
     return { account, username }
@@ -76,12 +80,45 @@ export default defineComponent({
     },
   },
   async mounted() {
-    const { address, contract } = this
+    const { address, contract } = this //you need here of account and address to get "account" objet which contains username, balance( ex : 200 tokens) and a boolean
     const account = await contract.methods.user(address).call()
     if (account.registered) this.account = account
   },
 })
 </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 <style lang="css" scoped>
 .home {

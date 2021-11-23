@@ -8,9 +8,9 @@ be forced to pay for servers.
 
 ```bash
 # With HTTPS
-git clone https://github.com/ghivert/build-collective.git
+git clone https://github.com/AlessandroRinaudo/build-collective.git
 # Or with SSH
-git clone git@github.com:ghivert/build-collective.git
+git clone git@github.com:AlessandroRinaudo/build-collective.git
 ```
 
 You’ll need to install dependencies. You’ll need [`Ganache`](https://www.trufflesuite.com/ganache), [`Node.js`](https://nodejs.org/en/) and [`NPM`](https://www.npmjs.com/) or [`Yarn`](https://yarnpkg.com/). You’ll need to install [`Metamask`](https://metamask.io/) as well to communicate with your blockchain.
